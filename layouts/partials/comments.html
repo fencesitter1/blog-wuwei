@@ -1,21 +1,24 @@
-<br>
-<br>
-<div id="comments-container">
-  <button id="toggle-comments">👉展开评论</button>
-  <div id="cusdis_thread"
+
+<div class="container">
+  <div id="comments-container">
+    <button id="toggle-comments">👉展开评论</button>
+    <div id="cusdis_thread"
     data-host="https://cusdis.com"
     data-app-id="e35b12ba-d45c-48e0-a7b8-9e5ee6fc206a"
     data-page-id="{{ .File.UniqueID }}"
     data-page-url="{{ .RelPermalink }}"
     data-page-title="{{ .Title }}"
     style="display: none;"
-  ></div>
+    ></div>
+  </div>
 </div>
 
 <style>
   #toggle-comments:hover {
-    text-decoration: underline; /* 悬停时显示下划线 */
+    text-decoration: solid underline  rgb(42,77,208) 2px; /* 悬停时显示白色下划线 */
   }
+
+
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
