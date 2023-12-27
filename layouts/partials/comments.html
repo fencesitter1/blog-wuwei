@@ -1,15 +1,40 @@
 <br>
 <br>
-<h3>评论</h3>
-<div style="width: 35px; height: 3px; background-color: rgb(42,77,208); margin-top: 10px; border-radius: 10px;"></div>
-<br/>
-<div id="cusdis_thread"
-  data-host="https://cusdis.com"
-  data-app-id="e35b12ba-d45c-48e0-a7b8-9e5ee6fc206a"
-  data-page-id="{{ .File.UniqueID }}"
-  data-page-url="{{ .RelPermalink }}"
-  data-page-title="{{ .Title }}"
-></div>
+<div id="comments-container">
+  <button id="toggle-comments">👉展开评论</button>
+  <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="e35b12ba-d45c-48e0-a7b8-9e5ee6fc206a"
+    data-page-id="{{ .File.UniqueID }}"
+    data-page-url="{{ .RelPermalink }}"
+    data-page-title="{{ .Title }}"
+    style="display: none;"
+  ></div>
+</div>
+
+<style>
+  #toggle-comments:hover {
+    text-decoration: underline; /* 悬停时显示下划线 */
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.getElementById('toggle-comments');
+    const commentsContainer = document.getElementById('cusdis_thread');
+
+    // 点击按钮时切换评论组件的显示/隐藏
+    toggleButton.addEventListener('click', function () {
+      if (commentsContainer.style.display === 'none') {
+        commentsContainer.style.display = 'block';
+        toggleButton.textContent = '👇关闭评论';
+      } else {
+        commentsContainer.style.display = 'none';
+        toggleButton.textContent = '👉展开评论';
+      }
+    });
+  });
+</script>
+
 
 {{- $js := resources.GetRemote "https://cusdis.com/js/widget/lang/zh-cn.js" | js.Build (dict "minify" true) -}}
 <script type='text/javascript'>
